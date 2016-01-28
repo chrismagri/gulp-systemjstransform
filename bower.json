@@ -1,0 +1,24 @@
+{
+  "name": "gulp-systemjstransform",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "chrismagri"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "systemjs",
+    "gulp",
+    "transform"
+  ],
+  "homepage": "https://github.com/chrismagri/gulp-systemjstransform",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

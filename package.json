@@ -1,0 +1,25 @@
+{
+  "name": "gulp-systemjstransform",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chrismagri/gulp-systemjstransform.git"
+  },
+  "keywords": [
+    "systemjs",
+    "gulp",
+    "transform"
+  ],
+  "author": "chrismagri",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chrismagri/gulp-systemjstransform/issues"
+  },
+  "homepage": "https://github.com/chrismagri/gulp-systemjstransform#readme",
+  "jspm": {}
+}
