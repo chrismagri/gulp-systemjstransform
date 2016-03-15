@@ -1,34 +1,25 @@
 var gulp = require('gulp');
 var fs = require('fs');
+var transform = require('jsonpath-object-transform');
 
-function Config(fileName) {
-    debugger;
+function Config(fileName, mappedName) {
   this.__fileName = fileName;
+  this.__mappedName = mappedName;
   console.log("filename");
-}
+};
 
 Config.prototype.read = function() {
    var source = (fs.readFileSync(this.__fileName));
-   debugger;
    var cfg = {};
+   var template = JSON.parse(fs.readFileSync(this.__mappedName,"utf-8"));
    var System = {
        config: function (_cfg) {
-           for (var c in _cfg) {
-               if (!_cfg.hasOwnProperty(c))
-                   continue;
-
-               var v = _cfg[c];
-               if (typeof v === 'object') {
-                   cfg[c] = cfg[c] || {};
-                   for (var p in v) {
-                       if (!v.hasOwnProperty(p))
-                           continue;
-                       cfg[c][p] = v[p];
-                   }
-               }
-               else
-                   cfg[c] = v;
-           }
+           // Convert to JSON
+           var _config = JSON.stringify(_cfg);
+           debugger;
+           var result = transform(template, _cfg);
+           console.log(result);
+           fs.writeFile('transformed.js',result);
        },
        paths: {},
        map: {},
@@ -37,10 +28,10 @@ Config.prototype.read = function() {
    eval(source.toString());
    debugger;
 };
-var config = new Config("config.js");
+var config = new Config("config.js","transform.js").read();
 gulp.task('default', function() {
   // place code for your default task here
-  var config = new Config("config.js");
-  console.log(config.read());
-  //config.read();
+  var config = new Config("config.js","transform.js").read();
+  //console.log(config.read());
+  config.read();
 });
